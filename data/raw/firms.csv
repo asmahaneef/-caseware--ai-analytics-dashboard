@@ -1,0 +1,26 @@
+firm_id,firm_name,firm_size_tier,plan_tier,region,signup_date
+F001,"Rodriguez, Figueroa and Sanchez & Associates",Small,Enterprise,Western Canada,2025-06-13
+F002,Doyle Ltd & Associates,Mid-Market,Professional,Quebec,2025-01-07
+F003,"Mcclain, Miller and Henderson & Associates",Small,Starter,Atlantic Canada,2025-03-04
+F004,Davis and Sons & Associates,Small,Starter,Western Canada,2025-02-05
+F005,"Guzman, Hoffman and Baldwin & Associates",Small,Enterprise,Atlantic Canada,2025-06-23
+F006,"Gardner, Robinson and Lawrence & Associates",Large,Starter,Atlantic Canada,2025-01-23
+F007,Blake and Sons & Associates,Small,Starter,Quebec,2025-04-19
+F008,"Henderson, Ramirez and Lewis & Associates",Small,Starter,Western Canada,2025-01-08
+F009,Garcia-James & Associates,Mid-Market,Starter,Atlantic Canada,2025-02-25
+F010,Abbott-Munoz & Associates,Large,Starter,Quebec,2025-05-10
+F011,Blair PLC & Associates,Mid-Market,Starter,Western Canada,2025-01-07
+F012,Dudley Group & Associates,Large,Professional,Ontario,2025-02-20
+F013,Arnold Ltd & Associates,Mid-Market,Starter,Western Canada,2025-06-29
+F014,"Mcclure, Ward and Lee & Associates",Small,Enterprise,Quebec,2025-04-18
+F015,Williams and Sons & Associates,Mid-Market,Starter,Ontario,2025-04-25
+F016,Galloway-Wyatt & Associates,Small,Starter,Atlantic Canada,2025-03-13
+F017,James Group & Associates,Small,Professional,Western Canada,2025-07-14
+F018,"Flowers, Martin and Kelly & Associates",Small,Starter,Quebec,2025-06-28
+F019,"Adams, Zuniga and Wong & Associates",Mid-Market,Starter,Quebec,2025-03-29
+F020,"Reid, Ferguson and Sanchez & Associates",Small,Professional,Ontario,2025-02-09
+F021,Gray-Mayo & Associates,Large,Professional,Quebec,2025-07-15
+F022,"Watts, Robinson and Nguyen & Associates",Small,Enterprise,Western Canada,2025-01-27
+F023,Perez Inc & Associates,Large,Starter,Western Canada,2025-04-08
+F024,Morales-Jones & Associates,Small,Enterprise,Ontario,2025-04-02
+F025,"Walter, Edwards and Rios & Associates",Small,Starter,Ontario,2025-06-04
