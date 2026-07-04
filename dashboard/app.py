@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 # -----------------------------------------------------------------------
 # Page setup
@@ -51,3 +52,30 @@ col4.metric("Avg AI Latency", f"{avg_latency:.0f} ms")
 
 st.divider()
 st.write("More charts and the 'So What' recommendations section are coming in the next steps.")
+
+# -----------------------------------------------------------------------
+# Chart 1: AI Outcomes (accepted / edited / rejected)
+# -----------------------------------------------------------------------
+st.subheader("AI Output Outcomes")
+
+outcome_df = ai_traces["outcome"].value_counts().reset_index()
+outcome_df.columns = ["outcome", "count"]
+
+fig_outcomes = px.pie(
+    outcome_df,
+    names="outcome",
+    values="count",
+    title="How users respond to AI-generated outputs",
+    color="outcome",
+    color_discrete_map={
+        "accepted": "#2ca02c",
+        "edited": "#ff7f0e",
+        "rejected": "#d62728",
+    },
+)
+st.plotly_chart(fig_outcomes, use_container_width=True)
+
+st.caption(
+    "Most AI outputs are accepted as-is, but roughly 1 in 5 are edited by the user before use — "
+    "suggesting the AI works well as a first draft rather than a final answer."
+)
