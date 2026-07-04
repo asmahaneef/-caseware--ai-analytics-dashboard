@@ -103,3 +103,47 @@ st.caption(
     "Usage is fairly evenly spread across features, with no single AI capability dramatically "
     "outperforming the others — worth investigating whether any one feature deserves deeper investment."
 )
+
+# -----------------------------------------------------------------------
+# Chart 3: Usage by Firm Size Tier
+# -----------------------------------------------------------------------
+st.subheader("Usage by Firm Size")
+
+events_with_firm = product_events.merge(firms[["firm_id", "firm_size_tier"]], on="firm_id")
+traces_with_firm = ai_traces.merge(firms[["firm_id", "firm_size_tier"]], on="firm_id")
+
+product_usage_by_size = events_with_firm.groupby("firm_size_tier")["event_id"].count().reset_index()
+product_usage_by_size.columns = ["firm_size_tier", "product_events"]
+
+ai_usage_by_size = traces_with_firm.groupby("firm_size_tier")["trace_id"].count().reset_index()
+ai_usage_by_size.columns = ["firm_size_tier", "ai_interactions"]
+
+usage_by_size = product_usage_by_size.merge(ai_usage_by_size, on="firm_size_tier")
+
+# Melt into long format so Plotly can group the bars side by side
+usage_by_size_long = usage_by_size.melt(
+    id_vars="firm_size_tier",
+    value_vars=["product_events", "ai_interactions"],
+    var_name="metric",
+    value_name="count",
+)
+
+firm_size_order = ["Small", "Mid-Market", "Large"]
+
+fig_firm_size = px.bar(
+    usage_by_size_long,
+    x="firm_size_tier",
+    y="count",
+    color="metric",
+    barmode="group",
+    category_orders={"firm_size_tier": firm_size_order},
+    title="Product events and AI interactions by firm size tier",
+    labels={"firm_size_tier": "Firm Size", "count": "Total Count", "metric": "Metric"},
+)
+st.plotly_chart(fig_firm_size, use_container_width=True)
+
+st.caption(
+    "Small firms generate disproportionately more usage - both general product activity and AI "
+    "interactions - relative to Mid-Market and Large firms. This is worth investigating: are small "
+    "firms finding more value in the product, or are Large firms under-engaged with untapped potential?"
+)
