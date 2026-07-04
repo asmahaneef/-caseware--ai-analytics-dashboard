@@ -79,3 +79,27 @@ st.caption(
     "Most AI outputs are accepted as-is, but roughly 1 in 5 are edited by the user before use — "
     "suggesting the AI works well as a first draft rather than a final answer."
 )
+
+# -----------------------------------------------------------------------
+# Chart 2: AI Feature Popularity
+# -----------------------------------------------------------------------
+st.subheader("AI Feature Usage")
+
+feature_counts = ai_traces["feature"].value_counts().reset_index()
+feature_counts.columns = ["feature", "uses"]
+
+fig_features = px.bar(
+    feature_counts.sort_values("uses"),
+    x="uses",
+    y="feature",
+    orientation="h",
+    title="Number of times each AI feature was used",
+    color="uses",
+    color_continuous_scale="Blues",
+)
+st.plotly_chart(fig_features, use_container_width=True)
+
+st.caption(
+    "Usage is fairly evenly spread across features, with no single AI capability dramatically "
+    "outperforming the others — worth investigating whether any one feature deserves deeper investment."
+)
