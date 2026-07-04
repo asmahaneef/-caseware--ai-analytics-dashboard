@@ -147,3 +147,29 @@ st.caption(
     "interactions - relative to Mid-Market and Large firms. This is worth investigating: are small "
     "firms finding more value in the product, or are Large firms under-engaged with untapped potential?"
 )
+
+# -----------------------------------------------------------------------
+# Chart 4: Funnel Stage Reach
+# -----------------------------------------------------------------------
+st.subheader("User Journey: Funnel Stage Reach")
+
+funnel_order = ["signup", "first_login", "first_real_usage", "first_ai_use", "first_export"]
+funnel_counts = funnel_steps["step_name"].value_counts().reindex(funnel_order).fillna(0).astype(int)
+
+funnel_df = funnel_counts.reset_index()
+funnel_df.columns = ["stage", "users"]
+
+fig_funnel = px.funnel(
+    funnel_df,
+    x="users",
+    y="stage",
+    title="How many users reach each stage of the product journey",
+)
+st.plotly_chart(fig_funnel, use_container_width=True)
+
+st.caption(
+    "Note: these stages are tracked independently rather than as a strict cumulative funnel - "
+    "for example, a user can export a report without ever using an AI feature. The steepest drop "
+    "is between first login and first AI use, suggesting AI feature discovery/adoption is the "
+    "biggest opportunity area in the user journey."
+)
